@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /products/{productId} {
+      allow read: if true;
+      allow create: if validProduct();
+      allow update, delete: if false;
+    }
+
+    function validProduct() {
+      let data = request.resource.data;
+      return data.keys().hasAll([
+          'name', 'designer', 'price', 'currency', 'description',
+          'imageUrl', 'imagePublicId', 'category', 'era', 'condition',
+          'lotNumber', 'createdAt'
+        ])
+        && data.keys().hasOnly([
+          'name', 'designer', 'price', 'compareAtPrice', 'currency',
+          'description', 'imageUrl', 'imagePublicId', 'category', 'era',
+          'condition', 'lotNumber', 'createdAt'
+        ])
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 120
+        && data.designer is string && data.designer.size() > 0 && data.designer.size() <= 100
+        && data.price is number && data.price > 0
+        && (!('compareAtPrice' in data) || (data.compareAtPrice is number && data.compareAtPrice >= data.price))
+        && data.currency in ['USD', 'NGN', 'EUR', 'GBP']
+        && data.description is string && data.description.size() > 0 && data.description.size() <= 2000
+        && data.imageUrl is string && data.imageUrl.matches('https://res.cloudinary.com/.+/image/upload/.+')
+        && data.imagePublicId is string && data.imagePublicId.size() > 0 && data.imagePublicId.size() <= 200
+        && data.category is string && data.category.size() <= 80
+        && data.era is string && data.era.size() <= 100
+        && data.condition is string && data.condition.size() <= 100
+        && data.lotNumber is string && data.lotNumber.size() <= 40
+        && data.createdAt is timestamp;
+    }
+  }
+}

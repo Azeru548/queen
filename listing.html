@@ -1,0 +1,803 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-highest": "#eae1da", "surface-bright": "#fff8f4", "tertiary": "#000000", "tertiary-container": "#3b0900", "secondary": "#755a1f", "on-primary-fixed": "#1d1b18", "secondary-container": "#fed890", "inverse-primary": "#cbc5c0", "tertiary-fixed": "#ffdbd1", "on-tertiary-container": "#c26d55", "surface-container": "#f5ece5", "on-primary-container": "#87837f", "on-primary-fixed-variant": "#494643", "primary-fixed": "#e7e1dc", "primary-container": "#1d1b18", "on-secondary-container": "#785d21", "error": "#ba1a1a", "primary-fixed-dim": "#cbc5c0", "tertiary-fixed-dim": "#ffb5a0", "inverse-on-surface": "#f8efe8", "outline": "#7c766e", "surface-container-low": "#fbf2eb", "on-surface-variant": "#4b463f", "secondary-fixed-dim": "#e6c27c", "surface-tint": "#615e5a", "on-tertiary-fixed-variant": "#76321e", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "on-error": "#ffffff", "surface-container-high": "#f0e7df", "surface-container-lowest": "#ffffff", "inverse-surface": "#34302b", "secondary-fixed": "#ffdea2", "surface-variant": "#eae1da", "on-secondary-fixed": "#261900", "on-background": "#1f1b17", "on-error-container": "#93000a", "on-surface": "#1f1b17", "on-primary": "#ffffff", "error-container": "#ffdad6", "background": "#fff8f4", "outline-variant": "#cdc5bc", "primary": "#000000", "on-secondary-fixed-variant": "#5b4307", "on-tertiary-fixed": "#3b0900", "surface": "#fff8f4", "surface-dim": "#e1d8d1" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-lg": "2rem", "space-xs": "0.25rem", "margin": "4rem", "gutter": "2rem", "gutter-mobile": "1rem", "space-xl": "3.5rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-mobile": "1.25rem" }, fontFamily: { "display-lg-mobile": ["Bodoni Moda"], "label-sm": ["Hanken Grotesk"], "headline-lg-mobile": ["Bodoni Moda"], "display-lg": ["Bodoni Moda"], "headline-lg": ["Bodoni Moda"], "display-md": ["Bodoni Moda"], "display-md-mobile": ["Bodoni Moda"], "headline-md": ["Bodoni Moda"], "headline-sm": ["Bodoni Moda"], "body-lg": ["Hanken Grotesk"], "label-lg": ["Hanken Grotesk"], "body-sm": ["Hanken Grotesk"], "body-md": ["Hanken Grotesk"], "label-md": ["Hanken Grotesk"] }, fontSize: { "display-lg-mobile": ["40px", { lineHeight: "48px", letterSpacing: "-0.01em", fontWeight: "400" }], "label-sm": ["10px", { lineHeight: "14px", letterSpacing: "0.18em", fontWeight: "600" }], "headline-lg-mobile": ["26px", { lineHeight: "34px", letterSpacing: "0em", fontWeight: "400" }], "display-lg": ["72px", { lineHeight: "80px", letterSpacing: "-0.02em", fontWeight: "400" }], "headline-lg": ["36px", { lineHeight: "44px", letterSpacing: "-0.01em", fontWeight: "400" }], "display-md": ["48px", { lineHeight: "56px", letterSpacing: "-0.015em", fontWeight: "400" }], "display-md-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "400" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "0em", fontWeight: "500" }], "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "0.01em", fontWeight: "500" }], "body-lg": ["17px", { lineHeight: "28px", letterSpacing: "-0.005em", fontWeight: "400" }], "label-lg": ["13px", { lineHeight: "18px", letterSpacing: "0.12em", fontWeight: "600" }], "body-sm": ["13px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "400" }], "body-md": ["15px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "400" }], "label-md": ["11px", { lineHeight: "16px", letterSpacing: "0.14em", fontWeight: "500" }] } } } };</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-md"><div class="bg-surface-container-high py-space-xs text-center border-b border-outline-variant/30"><p class="font-label-sm text-label-sm uppercase text-secondary tracking-widest">Complimentary Insured Delivery • Acquisitions Completed Exclusively via WhatsApp Concierge (+234 816 003 1775)</p></div><div class="max-w-[1680px] mx-auto px-margin-mobile md:px-margin flex items-center justify-between h-20"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Cur</span><select class="bg-transparent font-label-sm text-label-sm uppercase tracking-widest text-on-surface focus:outline-none cursor-pointer"><option value="USD">USD ($)</option><option value="EUR">EUR (€)</option><option value="GBP">GBP (£)</option></select></div><button aria-label="Search Archive" class="p-space-xs text-on-surface hover:text-secondary transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button></div><div class="flex flex-col items-center justify-center"><a class="flex flex-col items-center group" data-path="curatorial-salon" href="#"><span class="font-headline-lg text-headline-lg tracking-tight uppercase text-on-surface font-normal">The Queens</span><span class="font-label-sm text-label-sm tracking-[0.25em] text-secondary uppercase -mt-1">Archive &amp; Atelier</span></a></div><div class="flex items-center gap-space-md"><button aria-label="Concierge Inquiry" class="p-space-xs text-on-surface hover:text-secondary transition-colors"><span class="material-symbols-outlined text-[20px]">support_agent</span></button><a class="p-space-xs text-on-surface hover:text-secondary transition-colors relative" data-path="client-wishlist" href="#"><span class="material-symbols-outlined text-[20px]">favorite</span></a><a class="p-space-xs text-on-surface hover:text-secondary transition-colors relative" data-path="acquisition-bag" href="https://wa.me/2348160031775?text=Hello%20The%20Queens,%20I%20would%20like%20to%20complete%20my%20acquisition%20order" target="_blank" title="Acquire via WhatsApp Concierge (08160031775)"><span class="material-symbols-outlined text-[20px]">shopping_bag</span></a><div class="flex items-center ml-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1VP4_BRjmzMDPAnRxZZs77NNU1YzpCEwe536YOK_mfp7P-KtpD-8dYBocwkIIrf5AaUJPV8SEeKNnDaA3SJValaWOb5nl-GlFPJiyIM5cH34AewCOlRrOHtYUWaPa045hduPP_5YWTPIyRhhAim7Fmuf-5YFNHCDpqd6tlgxlJ3s4C_h1mRAc3VgExfoXy4KH4KrrOgIwRQMI3eJEn7mZTQTA5sR4rzfOMvSbCpKji8AyB27OWDYbUnew"></div></div></div><div class="border-t border-outline-variant/30 hidden md:block"><div class="max-w-[1680px] mx-auto px-margin flex items-center justify-center h-12"><nav class="flex items-center gap-space-lg" data-active-classes="text-primary font-semibold border-b border-primary"><a class="font-label-md text-label-md uppercase tracking-[0.14em] text-on-surface-variant hover:text-on-surface transition-colors py-2" data-path="curated-designers" href="#">Designers</a><a class="font-label-md text-label-md uppercase tracking-[0.14em] text-on-surface-variant hover:text-on-surface transition-colors py-2" data-path="new-acquisitions" href="#">New Acquisitions</a><a class="font-label-md text-label-md uppercase tracking-[0.14em] text-on-surface-variant hover:text-on-surface transition-colors py-2" data-path="apparel-and-silhouettes" href="#">Apparel &amp; Silhouettes</a><a class="font-label-md text-label-md uppercase tracking-[0.14em] text-on-surface-variant hover:text-on-surface transition-colors py-2" data-path="archival-outerwear" href="#">Archival Outerwear</a><a class="font-label-md text-label-md uppercase tracking-[0.14em] text-on-surface-variant hover:text-on-surface transition-colors py-2" data-path="vintage-vault" href="#">Vintage Vault</a><a class="font-label-md text-label-md uppercase tracking-[0.14em] text-on-surface-variant hover:text-on-surface transition-colors py-2" data-path="the-curators" href="#">The Curators</a></nav></div></div></header><main class="w-full pt-32 bg-background min-h-[calc(100vh-28rem)]"><div class="flex flex-col w-full">
+<!-- Monograph Header Banner -->
+<section class="w-full bg-surface-container-low px-margin-mobile md:px-margin py-space-xl">
+<div class="max-w-[1680px] mx-auto flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="max-w-3xl">
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.25em] text-secondary">Seasonal Deaccession Monograph</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-on-surface-variant">Private Vault Releases</span>
+</div>
+<h1 class="font-display-lg text-display-lg font-normal text-on-surface tracking-tight uppercase leading-none">The Archive Reductions</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-sm max-w-2xl">
+            Archival historical acquisitions and verified atelier deaccessions at calibrated valuations. Every garment is preserved in museum-grade humidity vaults and physically inspected prior to courier dispatch.
+          </p>
+</div>
+<!-- Ledger Meta Matrix -->
+<div class="bg-surface-container p-space-md flex flex-col gap-space-xs min-w-[280px]">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Catalog Inventory</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">38 PIECES</span>
+</div>
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Valuation Adjustment</span>
+<span class="font-label-md text-label-md text-secondary font-semibold">UP TO 45% OFF</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Courier Assurance</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
+              Global Bonded
+            </span>
+</div>
+</div>
+</div>
+<!-- Quick Metrics Ribbon -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter mt-space-sm pt-space-md">
+<div class="bg-surface-container-high p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Total Deaccessioned</span>
+<span class="font-headline-md text-headline-md text-on-surface font-normal mt-0.5">38 Editions</span>
+</div>
+<div class="bg-surface-container-high p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Authentication Tier</span>
+<span class="font-headline-md text-headline-md text-on-surface font-normal mt-0.5">100% Certified</span>
+</div>
+<div class="bg-surface-container-high p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Preservation Medium</span>
+<span class="font-headline-md text-headline-md text-on-surface font-normal mt-0.5">Acid-Free Vault</span>
+</div>
+<div class="bg-surface-container-high p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Dispatch Protocol</span>
+<span class="font-headline-md text-headline-md text-on-surface font-normal mt-0.5">Direct White-Glove</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Curatorial Filter Salon -->
+<section class="w-full bg-surface py-space-md px-margin-mobile md:px-margin sticky top-20 z-40 backdrop-blur-md bg-surface/95">
+<div class="max-w-[1680px] mx-auto flex flex-col gap-space-sm">
+<!-- House / Designer Filter Bar -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-2 scrollbar-none" id="designer-filter-bar">
+<button class="designer-btn bg-primary text-on-primary font-label-md text-label-md uppercase tracking-[0.14em] px-space-md py-2 whitespace-nowrap transition-colors" data-designer="all">
+          All Reduced (38)
+        </button>
+<button class="designer-btn bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-[0.14em] px-space-md py-2 whitespace-nowrap hover:bg-surface-container-highest transition-colors" data-designer="margiela">
+          Maison Margiela (8)
+        </button>
+<button class="designer-btn bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-[0.14em] px-space-md py-2 whitespace-nowrap hover:bg-surface-container-highest transition-colors" data-designer="yohji">
+          Yohji Yamamoto (6)
+        </button>
+<button class="designer-btn bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-[0.14em] px-space-md py-2 whitespace-nowrap hover:bg-surface-container-highest transition-colors" data-designer="owens">
+          Rick Owens (7)
+        </button>
+<button class="designer-btn bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-[0.14em] px-space-md py-2 whitespace-nowrap hover:bg-surface-container-highest transition-colors" data-designer="raf">
+          Raf Simons (5)
+        </button>
+<button class="designer-btn bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-[0.14em] px-space-md py-2 whitespace-nowrap hover:bg-surface-container-highest transition-colors" data-designer="cdg">
+          Comme des Garçons (4)
+        </button>
+<button class="designer-btn bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-[0.14em] px-space-md py-2 whitespace-nowrap hover:bg-surface-container-highest transition-colors" data-designer="lang">
+          Helmut Lang (5)
+        </button>
+<button class="designer-btn bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-[0.14em] px-space-md py-2 whitespace-nowrap hover:bg-surface-container-highest transition-colors" data-designer="row">
+          The Row (3)
+        </button>
+</div>
+<!-- Secondary Spec Filtering & Ledger Sorter -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<!-- Discount Tier Dropdown -->
+<div class="relative inline-block">
+<select aria-label="Filter by Reduction Level" class="bg-surface-container-low text-on-surface font-label-sm text-label-sm uppercase tracking-wider px-space-sm py-2 appearance-none pr-8 cursor-pointer focus:outline-none">
+<option value="">Markdown Tier: All Reductions</option>
+<option value="20">-20% Archival Selection</option>
+<option value="35">-35% Curatorial Clearance</option>
+<option value="45">-45% Rare Vault Deaccession</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-[14px] pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+<!-- Preservation Grade Dropdown -->
+<div class="relative inline-block">
+<select aria-label="Preservation Grade" class="bg-surface-container-low text-on-surface font-label-sm text-label-sm uppercase tracking-wider px-space-sm py-2 appearance-none pr-8 cursor-pointer focus:outline-none">
+<option value="">Preservation Grade: All</option>
+<option value="deadstock">Grade 9.8 / Archival Deadstock</option>
+<option value="near-mint">Grade 9.4 / Museum Vintage</option>
+<option value="excellent">Grade 9.0 / Curatorial Pristine</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-[14px] pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+<!-- Garment Typology -->
+<div class="relative inline-block">
+<select aria-label="Garment Silhouette and Textile" class="bg-surface-container-low text-on-surface font-label-sm text-label-sm uppercase tracking-wider px-space-sm py-2 appearance-none pr-8 cursor-pointer focus:outline-none">
+<option value="">Typology: All Silhouettes</option>
+<option value="wool">Tailored Heavy Wool</option>
+<option value="leather">Distressed Archival Leather</option>
+<option value="silk">Raw Washed Silk &amp; Cupro</option>
+<option value="knit">Sculptural Mohair Knitwear</option>
+<option value="denim">Bonded &amp; Painted Cotton</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-[14px] pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<!-- Sorting Alignment -->
+<div class="flex items-center gap-space-xs self-end lg:self-auto">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Sort By</span>
+<div class="relative inline-block">
+<select aria-label="Catalog Ordering" class="bg-surface-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider px-space-sm py-2 appearance-none pr-8 cursor-pointer focus:outline-none">
+<option value="curatorial-rarity">Curatorial Rarity &amp; Era</option>
+<option value="discount-desc">Highest Valuation Adjustment</option>
+<option value="price-asc">Acquisition Valuation (Low to High)</option>
+<option value="price-desc">Acquisition Valuation (High to Low)</option>
+<option value="recent">Recently Deaccessioned</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-[14px] pointer-events-none text-on-surface-variant">sort</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Garment Still-Life Monograph Grid -->
+<section class="w-full bg-surface px-margin-mobile md:px-margin py-space-xl">
+<div class="max-w-[1680px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter" id="archive-cards-container">
+<!-- Piece 01: Yohji Yamamoto -->
+<article class="garment-card group flex flex-col bg-surface-container-low transition-all duration-300 hover:shadow-md" data-designer="yohji">
+<div class="relative w-full aspect-[3/4] bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Museum archival still-life of a Yohji Yamamoto AW 1999 sculptural double-breasted long black wool gabardine trench coat resting flat on unbleached raw linen fabric with sharp natural studio side light, textured garment craft, architectural draping, no people, fine couture photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlKRppznnoNH46wfYVzLcC6OTxWzdLQe7kWoNlOFyimN3fsWJUFESgEegPlWTp5EO3frMWnBwzXilclxWYL4IRe2yqx_StoxWOUhHexR0NcrgJxpzpGSuPwAJLAB5yU6Ufvib36LuG30DvsReP12yAXBfZmLvBtZFbd5kLNI7snZiZ189DrK3l3Ki2iMwW5mNnlna09E0vz0Q3RqHNCpDfZzoNoPsgXB_O1Rzz5w">
+<!-- Badges -->
+<div class="absolute top-space-xs left-space-xs flex flex-col gap-1 items-start">
+<span class="bg-primary text-on-primary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-widest">-35% REDUCTION</span>
+<span class="bg-surface/90 backdrop-blur-sm text-secondary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider font-semibold">AW 1999 RUNWAY</span>
+</div>
+<div class="absolute top-space-xs right-space-xs">
+<button aria-label="Add to Acquisition Dossier" class="w-8 h-8 flex items-center justify-center bg-surface/80 hover:bg-surface text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-2 left-2">
+<span class="bg-surface-container-high/90 text-on-surface font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider">Grade 9.6 / Deadstock</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm bg-surface-container-low">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.18em] text-on-surface-variant font-semibold">Yohji Yamamoto Pour Homme</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Tokyo Atelier</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-normal leading-tight group-hover:text-secondary transition-colors">AW 1999 Bonded Gabardine Trench</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">Monumental double-faced heavy worsted wool with asymmetric horn toggle collar and interior deconstructed harness.</p>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">$2,080</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-through">$3,200</span>
+</div>
+<span class="font-label-sm text-label-sm text-error uppercase font-medium">Save $1,120</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="inspect-btn bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center" data-id="1">
+                  Inspect Spec
+                </button>
+<a href="https://wa.me/2348160031775?text=Hello%20The%20Queens,%20I%20am%20interested%20in%20acquiring%20the%20AW%201999%20Bonded%20Gabardine%20Trench%20($2,080)" target="_blank" class="bg-primary text-on-primary hover:bg-on-surface-variant font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center flex items-center justify-center gap-1"><span class="">Acquire via WhatsApp</span></a>
+</div>
+</div>
+</div>
+</article>
+<!-- Piece 02: Maison Margiela -->
+<article class="garment-card group flex flex-col bg-surface-container-low transition-all duration-300 hover:shadow-md" data-designer="margiela">
+<div class="relative w-full aspect-[3/4] bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Still-life product photograph of an authentic Maison Margiela Artisanal Line 0 10 reconstructed vintage trench vest on an antique ebonized wooden archival hanger against alabaster plaster wall, fine fabric textures, artisanal deconstructed white hand-stitches, high fashion still-life." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_pjG6wXXcBz9mn7LJGv2LZ781ldIKnwMvPuLIpFfi1mL05dFSN9ZbBP3SdFQZmSK8zn97scb1Iw3dTJHBGowqXDfR-jmFgkORagHcdufesbZGLVd805FBhc8EX_TvYwgMbXXwjEW3BcLeJTERKjq3pxUEVPpjSlBwe1EgvCD6mPbIZKl_W-rq3CBj4SNHLy7XXOJzQubRqr7Zkh_SK4ZCWxDcyj_ckE__oB35bA">
+<div class="absolute top-space-xs left-space-xs flex flex-col gap-1 items-start">
+<span class="bg-primary text-on-primary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-widest">-40% REDUCTION</span>
+<span class="bg-surface/90 backdrop-blur-sm text-secondary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider font-semibold">LINE 0 ARTISANAL</span>
+</div>
+<div class="absolute top-space-xs right-space-xs">
+<button aria-label="Add to Acquisition Dossier" class="w-8 h-8 flex items-center justify-center bg-surface/80 hover:bg-surface text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-2 left-2">
+<span class="bg-surface-container-high/90 text-on-surface font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider">Grade 9.4 / Museum Mint</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm bg-surface-container-low">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.18em] text-on-surface-variant font-semibold">Maison Margiela Artisanal</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Paris Atelier</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-normal leading-tight group-hover:text-secondary transition-colors">SS 2002 Reconstructed Trench Gilet</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">Hand-assembled from two 1950s British military raincoats, exposed raw seam lining and signature four white basted corner stitches.</p>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">$2,850</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-through">$4,750</span>
+</div>
+<span class="font-label-sm text-label-sm text-error uppercase font-medium">Save $1,900</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="inspect-btn bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center" data-id="2">
+                  Inspect Spec
+                </button>
+<a href="https://wa.me/2348160031775?text=Hello%20The%20Queens,%20I%20am%20interested%20in%20acquiring%20the%20SS%202002%20Reconstructed%20Trench%20Gilet%20($2,850)" target="_blank" class="bg-primary text-on-primary hover:bg-on-surface-variant font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center flex items-center justify-center gap-1"><span class="">Acquire via WhatsApp</span></a>
+</div>
+</div>
+</div>
+</article>
+<!-- Piece 03: Rick Owens -->
+<article class="garment-card group flex flex-col bg-surface-container-low transition-all duration-300 hover:shadow-md" data-designer="owens">
+<div class="relative w-full aspect-[3/4] bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Sculptural archival still-life of a Rick Owens AW 2008 Strutter washed blistered lambskin leather biker jacket laid flat with draped architectural silhouette on neutral off-white museum mounting board, ultra-detailed garment texture, no human presence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAADF9pW3lkigO2_2IfEUkOnQsI7DF-t-AiCl1bPU9nXYZ8zImFmglxHQ1iiM9Xlo84U3bR75gpHqjSCDuNqAXhiX9z9P6tcGWyFDxe7AnSaByQq6RFgV_KjmY-VgeaJeDNvCSaxuMsIVfYFZXCRsvfTRVlfZYDc_3u09Mi6kB_SV0DiAAo4-EUE8TqJ89VcRDxsVWCIhULdZRPw_FkSdXUCBEH8fI95UYzCmJ_yA">
+<div class="absolute top-space-xs left-space-xs flex flex-col gap-1 items-start">
+<span class="bg-primary text-on-primary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-widest">-30% REDUCTION</span>
+<span class="bg-surface/90 backdrop-blur-sm text-secondary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider font-semibold">AW 2008 STRUTTER</span>
+</div>
+<div class="absolute top-space-xs right-space-xs">
+<button aria-label="Add to Acquisition Dossier" class="w-8 h-8 flex items-center justify-center bg-surface/80 hover:bg-surface text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-2 left-2">
+<span class="bg-surface-container-high/90 text-on-surface font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider">Grade 9.2 / Excellent</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm bg-surface-container-low">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.18em] text-on-surface-variant font-semibold">Rick Owens</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Concordia Vault</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-normal leading-tight group-hover:text-secondary transition-colors">AW 2008 Blistered Lambskin Stooges</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">Iconic heavy washed blistered lambskin with extra long ribbed wool inner sleeves and asymmetric nickel Raccagni zipper tracks.</p>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">$1,890</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-through">$2,700</span>
+</div>
+<span class="font-label-sm text-label-sm text-error uppercase font-medium">Save $810</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="inspect-btn bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center" data-id="3">
+                  Inspect Spec
+                </button>
+<a href="https://wa.me/2348160031775?text=Hello%20The%20Queens,%20I%20am%20interested%20in%20acquiring%20the%20AW%202008%20Blistered%20Lambskin%20Stooges%20($1,890)" target="_blank" class="bg-primary text-on-primary hover:bg-on-surface-variant font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center flex items-center justify-center gap-1"><span class="">Acquire via WhatsApp</span></a>
+</div>
+</div>
+</div>
+</article>
+<!-- Piece 04: Raf Simons -->
+<article class="garment-card group flex flex-col bg-surface-container-low transition-all duration-300 hover:shadow-md" data-designer="raf">
+<div class="relative w-full aspect-[3/4] bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Still-life archival garment study of a Raf Simons AW 2001 Riot Riot Riot oversized textured virgin wool sweater in faded forest taupe flat lay on warm textured linen canvas, subtle yarn distressing, sculptural silhouette, studio directional daylight, high fashion archival still life." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW90uwEROO_Eeu0tdKMYQ2HjM5WW2Lo9VEaqOLgUdNpV-UuEZqXCfSR75-u3RqppvOU33S2gwRWq4KFt_dpVvQxgb7AVs8Wpc5boIYMRx6qHEfIc_NuLLonC4WEtmaj2l-gKsA8Nqa3CCH9Vsd0pN6Bl72TgC6M4YT8JxTYlfVYbRA3RDe0DPQtSIS4CXLle5xBRGmdF8rZ7BcmFCnTJhffFrUoWTfHZZRbkq_zQ">
+<div class="absolute top-space-xs left-space-xs flex flex-col gap-1 items-start">
+<span class="bg-primary text-on-primary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-widest">-25% REDUCTION</span>
+<span class="bg-surface/90 backdrop-blur-sm text-secondary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider font-semibold">AW 2001 RIOT!</span>
+</div>
+<div class="absolute top-space-xs right-space-xs">
+<button aria-label="Add to Acquisition Dossier" class="w-8 h-8 flex items-center justify-center bg-surface/80 hover:bg-surface text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-2 left-2">
+<span class="bg-surface-container-high/90 text-on-surface font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider">Grade 9.7 / Collector Vault</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm bg-surface-container-low">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.18em] text-on-surface-variant font-semibold">Raf Simons</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Antwerp Archive</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-normal leading-tight group-hover:text-secondary transition-colors">AW 2001 Oversized Virgin Wool Crewneck</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">Historic drop-shoulder waffle knit with intentional yarn fraying and elongated cuffs from the seminal Riot Riot Riot collection.</p>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">$3,450</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-through">$4,600</span>
+</div>
+<span class="font-label-sm text-label-sm text-error uppercase font-medium">Save $1,150</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="inspect-btn bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center" data-id="4">
+                  Inspect Spec
+                </button>
+<a href="https://wa.me/2348160031775?text=Hello%20The%20Queens,%20I%20am%20interested%20in%20acquiring%20the%20AW%202001%20Oversized%20Virgin%20Wool%20Crewneck%20($3,450)" target="_blank" class="bg-primary text-on-primary hover:bg-on-surface-variant font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center flex items-center justify-center gap-1"><span class="">Acquire via WhatsApp</span></a>
+</div>
+</div>
+</div>
+</article>
+<!-- Piece 05: Helmut Lang -->
+<article class="garment-card group flex flex-col bg-surface-container-low transition-all duration-300 hover:shadow-md" data-designer="lang">
+<div class="relative w-full aspect-[3/4] bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Still-life museum presentation of Helmut Lang SS 1998 Painter Classic Denim Trousers with subtle authentic white oil paint splatter and aged resin wash, laid flat on raw unbleached natural canvas, architectural perspective, archival fashion object." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAydqkPuhEz3oZVekGYuQF0Y8EVJliEHrv6mCrDbaU6743XcdKUXSMIwHlmE2zCPxn-gHu-ciXjdH5VhFRw0E611R2QcKmvimM2zzRFxz1KIuknBXtLpNqNt5W2a-y3oJALg2XvVzhafyffAVdWaegcjBbWC2ndnDNMwdyoFOY7g70uFEwSG9E5YBFQsvs2nQZCOPIZt5kIMOYjB2CUT-WNxCsEWVQ2tdIZHsBGLQ">
+<div class="absolute top-space-xs left-space-xs flex flex-col gap-1 items-start">
+<span class="bg-primary text-on-primary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-widest">-40% REDUCTION</span>
+<span class="bg-surface/90 backdrop-blur-sm text-secondary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider font-semibold">SS 1998 ARCHIVE</span>
+</div>
+<div class="absolute top-space-xs right-space-xs">
+<button aria-label="Add to Acquisition Dossier" class="w-8 h-8 flex items-center justify-center bg-surface/80 hover:bg-surface text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-2 left-2">
+<span class="bg-surface-container-high/90 text-on-surface font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider">Grade 9.1 / Patinated Vintage</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm bg-surface-container-low">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.18em] text-on-surface-variant font-semibold">Helmut Lang</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Vienna / NY Era</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-normal leading-tight group-hover:text-secondary transition-colors">SS 1998 Painter Denim 1997 Cut</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">Authentic hand-applied chalk paint splatters over heavy selvedge Italian denim, silver-toned stamped shank buttons.</p>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">$1,140</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-through">$1,900</span>
+</div>
+<span class="font-label-sm text-label-sm text-error uppercase font-medium">Save $760</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="inspect-btn bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center" data-id="5">
+                  Inspect Spec
+                </button>
+<a href="https://wa.me/2348160031775?text=Hello%20The%20Queens,%20I%20am%20interested%20in%20acquiring%20the%20SS%201998%20Painter%20Denim%201997%20Cut%20($1,140)" target="_blank" class="bg-primary text-on-primary hover:bg-on-surface-variant font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center flex items-center justify-center gap-1"><span class="">Acquire via WhatsApp</span></a>
+</div>
+</div>
+</div>
+</article>
+<!-- Piece 06: Comme des Garçons -->
+<article class="garment-card group flex flex-col bg-surface-container-low transition-all duration-300 hover:shadow-md" data-designer="cdg">
+<div class="relative w-full aspect-[3/4] bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Archival still life photograph of Comme des Garcons Homme Plus AW 2000 docking layered wool blazer with multi-textile spliced lapels on dark matte sculptural stand against cream linen wall, museum curation exhibition setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP1skq9413n1yDZMSNYK6SA7_QSN7b7FoBo24DiZVKmHdTet7goF65RPI7l_B6F-fWfF0ZyGYQnMEa6kyzrbsUgjPYAs7yDonfQiJL6zwNgO514lCDvMt1iGZYldRIebKOKeGwOa9PLjB1TY9czqO2maHzv38km-kKco6JwlMonAOhCblTkWZJ-2Rt-cFLjoeiLSmSDh0ap2_MFd93E9lI8zToeULAsdfrRJExfw">
+<div class="absolute top-space-xs left-space-xs flex flex-col gap-1 items-start">
+<span class="bg-primary text-on-primary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-widest">-35% REDUCTION</span>
+<span class="bg-surface/90 backdrop-blur-sm text-secondary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider font-semibold">AW 2000 DOCKING</span>
+</div>
+<div class="absolute top-space-xs right-space-xs">
+<button aria-label="Add to Acquisition Dossier" class="w-8 h-8 flex items-center justify-center bg-surface/80 hover:bg-surface text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-2 left-2">
+<span class="bg-surface-container-high/90 text-on-surface font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider">Grade 9.5 / Near Mint</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm bg-surface-container-low">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.18em] text-on-surface-variant font-semibold">Comme des Garçons Homme Plus</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Tokyo Studio</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-normal leading-tight group-hover:text-secondary transition-colors">AW 2000 Spliced Docking Tailored Jacket</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">Deconstructed hybrid tailored silhouette joining tropical wool houndstooth with unpadded boiled wool panels.</p>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">$1,625</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-through">$2,500</span>
+</div>
+<span class="font-label-sm text-label-sm text-error uppercase font-medium">Save $875</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="inspect-btn bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center" data-id="6">
+                  Inspect Spec
+                </button>
+<a href="https://wa.me/2348160031775?text=Hello%20The%20Queens,%20I%20am%20interested%20in%20acquiring%20the%20AW%202000%20Spliced%20Docking%20Tailored%20Jacket%20($1,625)" target="_blank" class="bg-primary text-on-primary hover:bg-on-surface-variant font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center flex items-center justify-center gap-1"><span class="">Acquire via WhatsApp</span></a>
+</div>
+</div>
+</div>
+</article>
+<!-- Piece 07: The Row -->
+<article class="garment-card group flex flex-col bg-surface-container-low transition-all duration-300 hover:shadow-md" data-designer="row">
+<div class="relative w-full aspect-[3/4] bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Luxury fashion still-life photograph of The Row oversized double-faced cashmere bathrobe style coat in oatmeal sand tone draped on dark minimalist beechwood hanger over limestone surface, clean lighting, no models, quiet luxury architectural purity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7NDxEo3ArAOVsePSEK2S21DcHZvZwSMlw8o9rxEqj0G6bb5FnuBZA3QrnRX0XpllHmHXzc0ShlGr3B2P0ZbpgDizWO0X0dqDyhuVx1iQQfGrvNuKK9no4Zwy7Sm7qMfZd7dgXvXOVVhBNCeV3abYuCOxmD0aKm5Iv3hY__9a-lChx1hleqYdp32RmgzEjr_QumDR_jSF1HRBDajX9-1poi3hwlfDWsqw3LZ9WGg">
+<div class="absolute top-space-xs left-space-xs flex flex-col gap-1 items-start">
+<span class="bg-primary text-on-primary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-widest">-45% REDUCTION</span>
+<span class="bg-surface/90 backdrop-blur-sm text-secondary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider font-semibold">RUNWAY ARCHIVE</span>
+</div>
+<div class="absolute top-space-xs right-space-xs">
+<button aria-label="Add to Acquisition Dossier" class="w-8 h-8 flex items-center justify-center bg-surface/80 hover:bg-surface text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-2 left-2">
+<span class="bg-surface-container-high/90 text-on-surface font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider">Grade 9.9 / Pristine Deadstock</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm bg-surface-container-low">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.18em] text-on-surface-variant font-semibold">The Row</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">New York Atelier</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-normal leading-tight group-hover:text-secondary transition-colors">Double-Faced Cashmere Canto Coat</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">Hand-stitched seamless double-faced Loro Piana cashmere with generous dropped kimonoid sleeves and integrated self-tie belt.</p>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">$3,740</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-through">$6,800</span>
+</div>
+<span class="font-label-sm text-label-sm text-error uppercase font-medium">Save $3,060</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="inspect-btn bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center" data-id="7">
+                  Inspect Spec
+                </button>
+<a href="https://wa.me/2348160031775?text=Hello%20The%20Queens,%20I%20am%20interested%20in%20acquiring%20the%20Double-Faced%20Cashmere%20Canto%20Coat%20($3,740)" target="_blank" class="bg-primary text-on-primary hover:bg-on-surface-variant font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center flex items-center justify-center gap-1"><span class="">Acquire via WhatsApp</span></a>
+</div>
+</div>
+</div>
+</article>
+<!-- Piece 08: Yohji Yamamoto Raw Silk -->
+<article class="garment-card group flex flex-col bg-surface-container-low transition-all duration-300 hover:shadow-md" data-designer="yohji">
+<div class="relative w-full aspect-[3/4] bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Museum archival still life of a Yohji Yamamoto SS 2003 deconstructed washed raw silk kimono over-vest in charcoal ink wash, laid flat on textured heavy cream paper with natural creases and fine fabric weave visible, studio high resolution lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4ZSHRLPBSgiV58hTXORuzl8Sjeh8t3qNQhsu6YNO11nUT3WI8AYeySRvbUW87TiFALesAQhBZ2Nngkb0PTB2uhYrX2i3LQr-csAn4GGUtEsHCn3kLh5OCbHyTNYzqoAT2gQZdEYprYNPiYfdFjEkfNvY6rYbxfAQHklKiVG92QrO52KedUR1SNFZlzv7_UMwbjQVdLRc6UD89c363KywANI_7j0k3SAYk2YjnHA">
+<div class="absolute top-space-xs left-space-xs flex flex-col gap-1 items-start">
+<span class="bg-primary text-on-primary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-widest">-35% REDUCTION</span>
+<span class="bg-surface/90 backdrop-blur-sm text-secondary font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider font-semibold">SS 2003 EDITION</span>
+</div>
+<div class="absolute top-space-xs right-space-xs">
+<button aria-label="Add to Acquisition Dossier" class="w-8 h-8 flex items-center justify-center bg-surface/80 hover:bg-surface text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-2 left-2">
+<span class="bg-surface-container-high/90 text-on-surface font-label-sm text-label-sm uppercase px-2 py-0.5 tracking-wider">Grade 9.3 / Curatorial Prime</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm bg-surface-container-low">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.18em] text-on-surface-variant font-semibold">Yohji Yamamoto Pour Homme</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Tokyo Atelier</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-normal leading-tight group-hover:text-secondary transition-colors">SS 2003 Washed Silk Draped Kimono Vest</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">Sumi-ink washed heavyweight habotai raw silk with trailing calico ribbons and asymmetric curved hem geometry.</p>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">$1,430</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-through">$2,200</span>
+</div>
+<span class="font-label-sm text-label-sm text-error uppercase font-medium">Save $770</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="inspect-btn bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center" data-id="8">
+                  Inspect Spec
+                </button>
+<a href="https://wa.me/2348160031775?text=Hello%20The%20Queens,%20I%20am%20interested%20in%20acquiring%20the%20SS%202003%20Washed%20Silk%20Draped%20Kimono%20Vest%20($1,430)" target="_blank" class="bg-primary text-on-primary hover:bg-on-surface-variant font-label-md text-label-md uppercase tracking-wider py-2.5 transition-colors text-center flex items-center justify-center gap-1"><span class="">Acquire via WhatsApp</span></a>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination / Index Ledger Bar -->
+<div class="mt-space-xl p-space-md bg-surface-container flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest">
+<span class="">Showing 8 of 38 Archival Sale Editions</span>
+<span class="text-secondary font-semibold ml-2">Page 01 of 05</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-space-md py-2 bg-surface text-on-surface font-label-md text-label-md uppercase tracking-wider hover:bg-surface-container-high transition-colors" disabled="">
+            Previous Monograph
+          </button>
+<div class="flex items-center gap-1">
+<button class="w-9 h-9 bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center">1</button>
+<button class="w-9 h-9 bg-surface text-on-surface font-label-sm text-label-sm flex items-center justify-center hover:bg-surface-container-high">2</button>
+<button class="w-9 h-9 bg-surface text-on-surface font-label-sm text-label-sm flex items-center justify-center hover:bg-surface-container-high">3</button>
+</div>
+<button class="px-space-md py-2 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-on-surface-variant transition-colors">
+            Next Monograph
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Slide-over Spec Inspector Drawer (Hidden by default, triggered by Inspect Spec buttons) -->
+<div class="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-sm hidden transition-opacity duration-300" id="spec-drawer-backdrop">
+<div class="fixed right-0 top-0 bottom-0 w-full max-w-xl bg-surface-container-lowest p-space-lg overflow-y-auto transform translate-x-full transition-transform duration-300 flex flex-col justify-between" id="spec-drawer">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/30">
+<div>
+<span class="font-label-sm text-label-sm uppercase text-secondary tracking-widest">Archival Inspection Sheet</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-normal mt-0.5" id="drawer-title">Garment Dossier</h3>
+</div>
+<button aria-label="Close Dossier" class="p-2 text-on-surface hover:text-secondary transition-colors" id="close-drawer-btn">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</div>
+<div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Ultra high-detail textile macro photography showing delicate weave pattern and craftsmanship stitches of archival luxury garment under museum grade illumination." id="drawer-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYeLoZiz_OUHpa2rG5u-WX3pRDooiC8gE-JN19DGU_n53ZJAYnEd-4Dyjubiwxy0HqGkwhwgX7a955lm_ERbP09_2uIhibTcbKwtKBcw3hzOOwenZwSrszf0k6HqOMjgmrg0R1jtZqwYoYDojDYCwb8-RqvvK7ib-KGitN94l0r0gzBJ98xfciFk6J1hqQAMeN1apwRWHab3liX34r1c0oGRR7aPZdyuAo1Zhi1Q">
+</div>
+<!-- Spec Quadrants -->
+<div class="grid grid-cols-2 gap-space-xs bg-surface-container p-space-sm">
+<div class="p-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Provenance</span>
+<p class="font-body-sm text-body-sm font-medium text-on-surface mt-0.5" id="drawer-provenance">Private French Collection</p>
+</div>
+<div class="p-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Preservation Grade</span>
+<p class="font-body-sm text-body-sm font-medium text-on-surface mt-0.5" id="drawer-grade">Grade 9.6 / Deadstock</p>
+</div>
+<div class="p-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Textile Matrix</span>
+<p class="font-body-sm text-body-sm font-medium text-on-surface mt-0.5" id="drawer-textile">100% Worsted Wool</p>
+</div>
+<div class="p-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Vault Location</span>
+<p class="font-body-sm text-body-sm font-medium text-on-surface mt-0.5" id="drawer-vault">Geneva Free-Port Cell #4</p>
+</div>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Physical Measurements (Lay Flat)</span>
+<div class="grid grid-cols-4 gap-2 mt-2 text-center">
+<div class="bg-surface-container-low p-2">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Pit to Pit</span>
+<p class="font-body-sm text-body-sm font-bold text-on-surface">54 cm</p>
+</div>
+<div class="bg-surface-container-low p-2">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Shoulder</span>
+<p class="font-body-sm text-body-sm font-bold text-on-surface">48 cm</p>
+</div>
+<div class="bg-surface-container-low p-2">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Sleeve</span>
+<p class="font-body-sm text-body-sm font-bold text-on-surface">66 cm</p>
+</div>
+<div class="bg-surface-container-low p-2">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Full Length</span>
+<p class="font-body-sm text-body-sm font-bold text-on-surface">118 cm</p>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-space-md border-t border-outline-variant/30 flex items-center justify-between gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase text-secondary">Acquisition Value</span>
+<p class="font-headline-md text-headline-md font-semibold text-on-surface" id="drawer-price">$2,080</p>
+</div>
+<a href="https://wa.me/2348160031775?text=Hello%20The%20Queens,%20I%20am%20interested%20in%20acquiring%20this%20archival%20edition" target="_blank" class="bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest px-space-lg py-3 hover:bg-on-surface-variant transition-colors text-center flex items-center justify-center gap-1"><span class="">Proceed via WhatsApp</span></a>
+</div>
+</div>
+</div>
+<!-- Archival Deaccession Assurance & Client Trust Banner -->
+<section class="w-full bg-surface-container-high py-space-xl px-margin-mobile md:px-margin">
+<div class="max-w-[1680px] mx-auto">
+<div class="text-center max-w-2xl mx-auto mb-space-lg">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.25em] text-secondary">Atelier Authentication Protocol</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase mt-space-xs font-normal">Rigorous Archival Verification</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+          Deaccessioned pieces in our reduction salon undergo identical multi-spectral fiber analysis and forensic inspection as full-reserve masterworks.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Pillar 01 -->
+<div class="bg-surface-container-lowest p-space-lg flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">biotech</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-normal">Forensic Fiber &amp; Weave Inspection</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Every specimen is inspected under stereoscopic magnification to cross-examine stitch gauge, hardware alloys, care tag typography, and textile warp-weft fidelity against our primary atelier registry.
+            </p>
+</div>
+<div class="pt-space-md mt-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">12-Point Authentication Report</span>
+</div>
+</div>
+<!-- Pillar 02 -->
+<div class="bg-surface-container-lowest p-space-lg flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">lock</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-normal">Insured Bonded Art Courier Transit</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              All acquisitions travel in acid-free breathable garment folios within climate-tempered hard shells. Dispatched via insured fine art courier services with satellite tracking and signed physical custody handover.
+            </p>
+</div>
+<div class="pt-space-md mt-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">Lloyd's Insured Vault Transit</span>
+</div>
+</div>
+<!-- Pillar 03 -->
+<div class="bg-surface-container-lowest p-space-lg flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">history_edu</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-normal">Wax-Sealed Provenance Monograph</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Each garment arrives accompanied by a hand-numbered cotton paper dossier detailing ownership lineage, exhibition notes, runway references, and a permanent cryptographic digital registration slip.
+            </p>
+</div>
+<div class="pt-space-md mt-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">Deed of Provenance Included</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Curatorial Dispatch & Monograph Subscription -->
+<section class="w-full bg-surface-container py-space-xl px-margin-mobile md:px-margin">
+<div class="max-w-[1680px] mx-auto">
+<div class="bg-surface-container-lowest p-space-lg md:p-space-xl flex flex-col lg:flex-row items-center justify-between gap-space-xl shadow-sm">
+<div class="max-w-xl">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.25em] text-secondary">Confidential Salon Dispatch</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase font-normal mt-space-xs">Private Sale Catalog Inquiries</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-sm">
+            Members receive 24-hour advance access to archival price deaccessions, retrospective monographic treatises, and private salon acquisition appointments prior to general digital disclosure.
+          </p>
+</div>
+<div class="w-full lg:max-w-md flex flex-col gap-space-xs">
+<form class="flex flex-col sm:flex-row items-stretch gap-2" onsubmit="event.preventDefault(); alert('Your correspondence address has been registered with the curatorial desk.');">
+<input class="w-full bg-surface-container-low px-space-md py-3 text-on-surface font-body-sm text-body-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="salon.inquiry@archive.com" required="" type="email">
+<button class="bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest px-space-md py-3 whitespace-nowrap hover:bg-on-surface-variant transition-colors" type="submit">
+              Request Access
+            </button>
+</form>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Dispatched strictly bi-weekly. Zero solicitation.</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Inline Javascript for Client-Side Micro-Interactions -->
+<script>
+  (function() {
+    // Designer Filter Logic
+    const filterButtons = document.querySelectorAll('.designer-btn');
+    const cards = document.querySelectorAll('.garment-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const designer = btn.getAttribute('data-designer');
+
+        // Toggle active states
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-primary', 'text-on-primary');
+          b.classList.add('bg-surface-container', 'text-on-surface');
+        });
+        btn.classList.add('bg-primary', 'text-on-primary');
+        btn.classList.remove('bg-surface-container', 'text-on-surface');
+
+        // Filter cards
+        cards.forEach(card => {
+          const cardDesigner = card.getAttribute('data-designer');
+          if (designer === 'all' || cardDesigner === designer) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Spec Inspector Drawer Logic
+    const inspectButtons = document.querySelectorAll('.inspect-btn');
+    const drawerBackdrop = document.getElementById('spec-drawer-backdrop');
+    const drawer = document.getElementById('spec-drawer');
+    const closeDrawerBtn = document.getElementById('close-drawer-btn');
+
+    const garmentData = {
+      '1': {
+        title: 'Yohji Yamamoto AW 1999 Bonded Trench',
+        provenance: 'Parisian Private Collector',
+        grade: 'Grade 9.6 / Deadstock',
+        textile: '100% Worsted Heavy Wool',
+        vault: 'Geneva Free-Port Vault #4',
+        price: '$2,080'
+      },
+      '2': {
+        title: 'Maison Margiela SS 2002 Artisanal Gilet',
+        provenance: 'Deaccessioned from Antwerp Studio',
+        grade: 'Grade 9.4 / Museum Mint',
+        textile: '1950s Reclaimed Military Twill',
+        vault: 'Paris Atelier Reserve #12',
+        price: '$2,850'
+      },
+      '3': {
+        title: 'Rick Owens AW 2008 Blistered Lambskin',
+        provenance: 'Private Estate, Milan',
+        grade: 'Grade 9.2 / Excellent',
+        textile: 'Washed Blistered Lambskin Leather',
+        vault: 'Concordia Archive Vault #9',
+        price: '$1,890'
+      },
+      '4': {
+        title: 'Raf Simons AW 2001 Virgin Wool Knit',
+        provenance: 'Antwerp Private Vault',
+        grade: 'Grade 9.7 / Collector Vault',
+        textile: '100% Virgin Spun Wool',
+        vault: 'Brussels Art Custody #3',
+        price: '$3,450'
+      },
+      '5': {
+        title: 'Helmut Lang SS 1998 Painter Classic Denim',
+        provenance: 'Vienna Archives Consignment',
+        grade: 'Grade 9.1 / Patinated Vintage',
+        textile: '100% Italian Selvedge Cotton',
+        vault: 'Milan Depot #7',
+        price: '$1,140'
+      },
+      '6': {
+        title: 'Comme des Garçons AW 2000 Docking Blazer',
+        provenance: 'Tokyo Harajuku Archive Salon',
+        grade: 'Grade 9.5 / Near Mint',
+        textile: 'Wool Houndstooth & Boiled Wool',
+        vault: 'Kyoto Custody Cell #2',
+        price: '$1,625'
+      },
+      '7': {
+        title: 'The Row Double-Faced Cashmere Canto Coat',
+        provenance: 'Manhattan Private Client Suite',
+        grade: 'Grade 9.9 / Pristine Deadstock',
+        textile: '100% Loro Piana Double Cashmere',
+        vault: 'New York Reserve #1',
+        price: '$3,740'
+      },
+      '8': {
+        title: 'Yohji Yamamoto SS 2003 Silk Kimono Vest',
+        provenance: 'Kyoto Textile Collector',
+        grade: 'Grade 9.3 / Curatorial Prime',
+        textile: '100% Sumi Washed Habotai Silk',
+        vault: 'Tokyo Atelier Reserve #8',
+        price: '$1,430'
+      }
+    };
+
+    inspectButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        const data = garmentData[id];
+        if (data) {
+          document.getElementById('drawer-title').textContent = data.title;
+          document.getElementById('drawer-provenance').textContent = data.provenance;
+          document.getElementById('drawer-grade').textContent = data.grade;
+          document.getElementById('drawer-textile').textContent = data.textile;
+          document.getElementById('drawer-vault').textContent = data.vault;
+          document.getElementById('drawer-price').textContent = data.price;
+        }
+
+        drawerBackdrop.classList.remove('hidden');
+        setTimeout(() => {
+          drawer.classList.remove('translate-x-full');
+        }, 10);
+      });
+    });
+
+    const closeDrawer = () => {
+      drawer.classList.add('translate-x-full');
+      setTimeout(() => {
+        drawerBackdrop.classList.add('hidden');
+      }, 300);
+    };
+
+    closeDrawerBtn.addEventListener('click', closeDrawer);
+    drawerBackdrop.addEventListener('click', (e) => {
+      if (e.target === drawerBackdrop) {
+        closeDrawer();
+      }
+    });
+  })();
+</script></main><footer class="w-full bg-surface-container-low border-t border-outline-variant/30 mt-space-xl"><div class="max-w-[1680px] mx-auto px-margin-mobile md:px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-space-xl"><div class="md:col-span-4"><p class="font-headline-md text-headline-md text-on-surface mb-space-sm">The Queens</p><p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-space-md">An authoritative digital salon preserving museum-grade garments, architectural silhouettes, and certified rare historical editions through physical curatorial inspection.</p><div class="flex items-center gap-space-xs text-secondary"><span class="material-symbols-outlined text-[18px]">verified</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface">100% Provenance &amp; Authentication Guarantee</span></div></div><div class="md:col-span-2"><p class="font-label-md text-label-md uppercase text-on-surface mb-space-md tracking-wider">Curated Houses</p><ul class="flex flex-col gap-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Maison Margiela (Artisanal)</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Helmut Lang (1996-2004)</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Yohji Yamamoto Pour Homme</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Comme des Garçons Homme Plus</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Raf Simons (Archival AW)</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Issey Miyake Men</li></ul></div><div class="md:col-span-2"><p class="font-label-md text-label-md uppercase text-on-surface mb-space-md tracking-wider">Client Concierge</p><ul class="flex flex-col gap-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Private Viewing Appointments</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Archival Consignment Dossier</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Condition Reports &amp; Measurement</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Insured Art Courier Logistics</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Certificate of Authenticity</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Bespoke Vault Storage</li></ul></div><div class="md:col-span-4"><p class="font-label-md text-label-md uppercase text-on-surface mb-space-sm tracking-wider">Curatorial Dispatch</p><p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">Receive confidential catalog notices before public release, retrospective essays, and acquisition monographs.</p><div class="flex flex-col gap-space-xs"><div class="flex items-center border-b border-on-surface/40 focus-within:border-on-surface py-2"><input class="bg-transparent font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none w-full" placeholder="Enter your correspondence email" type="email"><button class="font-label-md text-label-md uppercase tracking-widest text-on-surface hover:text-secondary transition-colors whitespace-nowrap pl-4">Subscribe</button></div><span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Dispatched bi-weekly. Private salon integrity maintained.</span></div></div></div><div class="pt-space-md border-t border-outline-variant/20 flex flex-col md:flex-row items-center justify-between gap-space-sm"><p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">© 2024 The Queens Archive. All Rights Reserved. Parisian Atelier &amp; Private Vaults.</p><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer">Terms of Provenance</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer">Custody &amp; Insured Transit</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer">Privacy Policy</span></div></div></div></footer>
+
+<script type="module" src="catalog-runtime.js"></script></body></html>
