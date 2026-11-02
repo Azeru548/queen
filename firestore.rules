@@ -4,7 +4,8 @@ service cloud.firestore {
     match /products/{productId} {
       allow read: if true;
       allow create: if validProduct();
-      allow update, delete: if false;
+      allow update: if validProduct();
+      allow delete: if true;
     }
 
     function validProduct() {

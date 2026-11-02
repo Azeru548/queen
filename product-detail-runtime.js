@@ -85,9 +85,8 @@ export function renderProduct(product) {
     .find((element) => element.textContent.trim() === "Sale Acquisition");
   if (saleBadge) saleBadge.textContent = "Archive Listing";
 
-  const staticSections = main?.querySelectorAll("section") || [];
-  staticSections[2]?.setAttribute("hidden", "");
-  staticSections[3]?.setAttribute("hidden", "");
+  document.getElementById("curatorial-research")?.setAttribute("hidden", "");
+  document.getElementById("preservation-scorecard")?.setAttribute("hidden", "");
 
   const detailPanel = document.createElement("div");
   detailPanel.className = "dynamic-product-summary mt-space-md p-space-md bg-surface-container-low border border-outline-variant/30";

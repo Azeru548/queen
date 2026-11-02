@@ -2,10 +2,19 @@ import { formatPrice, watchProducts, whatsappUrl } from "./firebase.js";
 
 const catalogMount = document.getElementById("archive-cards-container");
 const homeMount = document.querySelector("#curated-chapters .grid");
+const folioMount = document.getElementById("home-folio-grid");
+const sortSelect = document.getElementById("catalog-sort");
 let activeDesigner = "all";
+let latestProducts = [];
 
 function designerKey(value = "") {
-  const slug = value.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  const slug = value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
   const aliases = {
     "rick-owens": "owens",
     "maison-margiela-artisanal": "margiela",
@@ -15,6 +24,7 @@ function designerKey(value = "") {
     "helmut-lang": "lang",
     "raf-simons": "raf",
     "the-row": "row",
+    "yohji-yamamoto": "yohji",
     "yohji-yamamoto-pour-homme": "yohji"
   };
   return aliases[slug] || slug || "other";
@@ -89,12 +99,69 @@ function makeProductCard(product, home = false) {
   return article;
 }
 
+function priceOf(product) {
+  const amount = Number(product.price);
+  return Number.isFinite(amount) ? amount : Infinity;
+}
+
+function createdAtOf(product) {
+  return product.createdAt?.toMillis?.() ?? 0;
+}
+
+function discountOf(product) {
+  const compare = Number(product.compareAtPrice);
+  const price = Number(product.price);
+  if (Number.isFinite(compare) && Number.isFinite(price) && price > 0 && compare > price) {
+    return (compare - price) / price;
+  }
+  return -1;
+}
+
+function eraYear(product) {
+  const years = String(product.era || "").match(/\b(?:19|20)\d{2}\b/g);
+  return years ? Number(years[years.length - 1]) : 0;
+}
+
+function sortProducts(products) {
+  const mode = sortSelect?.value || "curatorial-rarity";
+  const list = [...products];
+  if (mode === "price-asc") list.sort((left, right) => priceOf(left) - priceOf(right));
+  else if (mode === "price-desc") list.sort((left, right) => priceOf(right) - priceOf(left));
+  else if (mode === "discount-desc") list.sort((left, right) => discountOf(right) - discountOf(left));
+  else if (mode === "recent") list.sort((left, right) => createdAtOf(right) - createdAtOf(left));
+  else list.sort((left, right) => eraYear(right) - eraYear(left) || createdAtOf(right) - createdAtOf(left));
+  return list;
+}
+
+function updateCounters(products) {
+  const setText = (id, text) => {
+    const element = document.getElementById(id);
+    if (element) element.textContent = text;
+  };
+
+  const lots = products.length;
+  setText("salon-lot-count", `${lots} Lot${lots === 1 ? "" : "s"}`);
+  setText("ledger-piece-count", `${lots} PIECES`);
+  setText("ledger-editions-count", `${lots} Edition${lots === 1 ? "" : "s"}`);
+
+  const houses = new Set(products.map((product) => designerKey(product.designer))).size;
+  setText("salon-house-count", `${houses} Atelier${houses === 1 ? "" : "s"}`);
+}
+
+function updateEmptyStates(hasProducts) {
+  document.querySelectorAll(".catalog-empty-state").forEach((element) => {
+    if (hasProducts) element.remove();
+    else element.textContent = "No lots are published in the archive yet.";
+  });
+}
+
 export function renderProducts(products) {
-  syncDesignerFilters(products);
+  latestProducts = products;
+  const sorted = sortProducts(products);
 
   if (catalogMount) {
     catalogMount.querySelectorAll(".firestore-product-card").forEach((card) => card.remove());
-    products.forEach((product) => {
+    sorted.forEach((product) => {
       const card = makeProductCard(product);
       card.style.display = activeDesigner === "all" || card.dataset.designer === activeDesigner ? "flex" : "none";
       catalogMount.append(card);
@@ -103,25 +170,41 @@ export function renderProducts(products) {
 
   if (homeMount) {
     homeMount.querySelectorAll(".firestore-product-card").forEach((card) => card.remove());
-    products.slice(0, 6).forEach((product) => homeMount.append(makeProductCard(product, true)));
+    sorted.slice(0, 6).forEach((product) => homeMount.append(makeProductCard(product, true)));
   }
+
+  if (folioMount) {
+    folioMount.querySelectorAll(".firestore-product-card").forEach((card) => card.remove());
+    sorted.slice(0, 4).forEach((product) => folioMount.append(makeProductCard(product, true)));
+  }
+
+  syncDesignerFilters(products);
+  updateCounters(products);
+  updateEmptyStates(products.length > 0);
 }
 
 function syncDesignerFilters(products) {
   const filterBar = document.getElementById("designer-filter-bar");
   if (!filterBar) return;
 
+  const counts = new Map();
+  products.forEach((product) => {
+    const key = designerKey(product.designer);
+    counts.set(key, (counts.get(key) || 0) + 1);
+  });
+
   filterBar.querySelectorAll(".firestore-designer-filter").forEach((button) => button.remove());
   const knownDesigners = new Set(
     [...filterBar.querySelectorAll(".designer-btn")].map((button) => button.dataset.designer)
   );
-  const designers = new Map();
+
+  const dynamicDesigners = new Map();
   products.forEach((product) => {
     const key = designerKey(product.designer);
-    if (!knownDesigners.has(key)) designers.set(key, product.designer);
+    if (!knownDesigners.has(key)) dynamicDesigners.set(key, product.designer);
   });
 
-  designers.forEach((label, key) => {
+  dynamicDesigners.forEach((label, key) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "designer-btn firestore-designer-filter bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-[0.14em] px-space-md py-2 whitespace-nowrap transition-colors hover:bg-surface-container-highest";
@@ -131,14 +214,28 @@ function syncDesignerFilters(products) {
   });
 
   filterBar.querySelectorAll(".designer-btn").forEach((button) => {
+    const key = button.dataset.designer || "all";
+    const count = key === "all" ? products.length : (counts.get(key) || 0);
+    const baseLabel = button.textContent.replace(/\s*\(\d+\)\s*$/, "");
+    button.textContent = `${baseLabel} (${count})`;
+    button.hidden = key !== "all" && products.length > 0 && count === 0;
+
+    const isActive = key === activeDesigner;
+    button.classList.toggle("bg-primary", isActive);
+    button.classList.toggle("text-on-primary", isActive);
+    button.classList.toggle("bg-surface-container", !isActive);
+    button.classList.toggle("text-on-surface", !isActive);
+
     button.onclick = () => {
-      activeDesigner = button.dataset.designer || "all";
+      activeDesigner = key;
       filterBar.querySelectorAll(".designer-btn").forEach((filter) => {
-        filter.classList.remove("bg-primary", "text-on-primary");
-        filter.classList.add("bg-surface-container", "text-on-surface");
+        const filterKey = filter.dataset.designer || "all";
+        const active = filterKey === activeDesigner;
+        filter.classList.toggle("bg-primary", active);
+        filter.classList.toggle("text-on-primary", active);
+        filter.classList.toggle("bg-surface-container", !active);
+        filter.classList.toggle("text-on-surface", !active);
       });
-      button.classList.add("bg-primary", "text-on-primary");
-      button.classList.remove("bg-surface-container", "text-on-surface");
       document.querySelectorAll(".garment-card").forEach((card) => {
         card.style.display = activeDesigner === "all" || card.dataset.designer === activeDesigner ? "flex" : "none";
       });
@@ -146,12 +243,19 @@ function syncDesignerFilters(products) {
   });
 }
 
-if (catalogMount || homeMount) {
+if (sortSelect) {
+  sortSelect.addEventListener("change", () => renderProducts(latestProducts));
+}
+
+if (catalogMount || homeMount || folioMount) {
   watchProducts(renderProducts, (error) => {
     console.error("Could not load live catalog listings:", error);
     const notice = document.createElement("p");
     notice.className = "font-body-sm text-body-sm text-error";
     notice.textContent = "Live catalog updates are temporarily unavailable. Showing the archive listings.";
-    (catalogMount || homeMount)?.before(notice);
+    (catalogMount || homeMount || folioMount)?.before(notice);
+    document.querySelectorAll(".catalog-empty-state").forEach((element) => {
+      element.textContent = "The live archive could not be loaded right now.";
+    });
   });
 }
