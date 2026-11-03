@@ -2,7 +2,6 @@ import { formatPrice, watchProducts, whatsappUrl } from "./firebase.js";
 
 const catalogMount = document.getElementById("archive-cards-container");
 const homeMount = document.querySelector("#curated-chapters .grid");
-const folioMount = document.getElementById("home-folio-grid");
 const sortSelect = document.getElementById("catalog-sort");
 let activeDesigner = "all";
 let latestProducts = [];
@@ -141,11 +140,14 @@ function updateCounters(products) {
 
   const lots = products.length;
   setText("salon-lot-count", `${lots} Lot${lots === 1 ? "" : "s"}`);
-  setText("ledger-piece-count", `${lots} PIECES`);
-  setText("ledger-editions-count", `${lots} Edition${lots === 1 ? "" : "s"}`);
+  setText("ledger-piece-count", `${lots} PIECE${lots === 1 ? "" : "S"}`);
 
   const houses = new Set(products.map((product) => designerKey(product.designer))).size;
   setText("salon-house-count", `${houses} Atelier${houses === 1 ? "" : "s"}`);
+
+  // the reduction figure is only claimed when a listing actually has one
+  const bestReduction = products.reduce((best, product) => Math.max(best, discountOf(product)), -1);
+  setText("ledger-max-reduction", bestReduction > 0 ? `UP TO ${Math.round(bestReduction * 100)}% OFF` : "NONE LISTED");
 }
 
 function updateEmptyStates(hasProducts) {
@@ -171,11 +173,6 @@ export function renderProducts(products) {
   if (homeMount) {
     homeMount.querySelectorAll(".firestore-product-card").forEach((card) => card.remove());
     sorted.slice(0, 6).forEach((product) => homeMount.append(makeProductCard(product, true)));
-  }
-
-  if (folioMount) {
-    folioMount.querySelectorAll(".firestore-product-card").forEach((card) => card.remove());
-    sorted.slice(0, 4).forEach((product) => folioMount.append(makeProductCard(product, true)));
   }
 
   syncDesignerFilters(products);
@@ -247,13 +244,13 @@ if (sortSelect) {
   sortSelect.addEventListener("change", () => renderProducts(latestProducts));
 }
 
-if (catalogMount || homeMount || folioMount) {
+if (catalogMount || homeMount) {
   watchProducts(renderProducts, (error) => {
     console.error("Could not load live catalog listings:", error);
     const notice = document.createElement("p");
     notice.className = "font-body-sm text-body-sm text-error";
     notice.textContent = "Live catalog updates are temporarily unavailable. Showing the archive listings.";
-    (catalogMount || homeMount || folioMount)?.before(notice);
+    (catalogMount || homeMount)?.before(notice);
     document.querySelectorAll(".catalog-empty-state").forEach((element) => {
       element.textContent = "The live archive could not be loaded right now.";
     });

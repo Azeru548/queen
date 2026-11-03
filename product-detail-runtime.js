@@ -1,6 +1,54 @@
 import { doc, formatPrice, onSnapshot, db, whatsappUrl } from "./firebase.js";
 
 const productId = new URLSearchParams(window.location.search).get("id");
+
+const el = (id) => document.getElementById(id);
+const setText = (id, value) => {
+  const node = el(id);
+  if (node) node.textContent = value;
+};
+const setHidden = (id, hidden) => {
+  const node = el(id);
+  if (node) node.hidden = hidden;
+};
+
+function showNotice(message) {
+  let notice = el("live-product-notice");
+  if (!notice) {
+    notice = document.createElement("p");
+    notice.id = "live-product-notice";
+    notice.className = "font-body-sm text-body-sm text-error px-margin-mobile md:px-margin pt-space-sm";
+    document.querySelector("main")?.prepend(notice);
+  }
+  notice.textContent = message;
+}
+
+function clearNotice() {
+  el("live-product-notice")?.remove();
+}
+
+function showMissingListing() {
+  setText("product-title", "Listing not found");
+  setText("product-designer", "The Queens Archive");
+  setText("product-subtitle", "");
+  setText("product-status", "Unavailable");
+  setText("registry-status", "Not in the archive");
+  setText("product-price", "");
+  setText("product-currency", "");
+  setText("breadcrumb-lot", "Not found");
+  setHidden("product-compare-price", true);
+  setHidden("archive-discount-badge", true);
+
+  const image = el("main-garment-image");
+  if (image) image.hidden = true;
+
+  el("product-specs")?.replaceChildren();
+  const actions = el("product-acquire");
+  if (actions) actions.hidden = true;
+
+  showNotice("This listing is no longer available. Please return to the archive.");
+}
+
 if (productId) {
   onSnapshot(
     doc(db, "products", productId),
@@ -16,102 +64,98 @@ if (productId) {
       showNotice("This listing could not be loaded right now. Please try again shortly.");
     }
   );
+} else {
+  showMissingListing();
+  setText("product-title", "No listing selected");
+  showNotice("Open a piece from the archive to view its dossier.");
 }
 
-function showNotice(message) {
-  let notice = document.getElementById("live-product-notice");
-  if (!notice) {
-    notice = document.createElement("p");
-    notice.id = "live-product-notice";
-    notice.className = "font-body-sm text-body-sm text-error mt-space-sm";
-    document.querySelector("main")?.prepend(notice);
+function createRow(label, value) {
+  const row = document.createElement("div");
+  row.className = "flex items-baseline justify-between gap-space-md py-1.5 border-b border-outline-variant/30 last:border-b-0";
+
+  const heading = document.createElement("span");
+  heading.className = "font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant";
+  heading.textContent = label;
+
+  const content = document.createElement("span");
+  content.className = "font-body-sm text-body-sm text-on-surface text-right";
+  content.textContent = value || "Not specified";
+
+  row.append(heading, content);
+  return row;
+}
+
+function createSpecs(product) {
+  const wrap = el("product-specs");
+  if (!wrap) return;
+  wrap.replaceChildren();
+
+  const rows = [
+    ["Collection / era", product.era],
+    ["Condition", product.condition],
+    ["Category", product.category],
+    ["Lot reference", product.lotNumber]
+  ].filter(([, value]) => value);
+
+  if (!rows.length) return;
+  rows.forEach(([label, value]) => wrap.append(createRow(label, value)));
+}
+
+function createDescription(product) {
+  const wrap = el("product-description");
+  if (wrap) {
+    wrap.textContent = product.description || "";
+    wrap.hidden = !product.description;
   }
-  notice.textContent = message;
-}
-
-function showMissingListing() {
-  const title = document.querySelector("main h1");
-  if (title) title.textContent = "Listing not found";
-  const image = document.getElementById("main-garment-image");
-  if (image) image.hidden = true;
-  showNotice("This listing is no longer available. Please return to the archive.");
 }
 
 export function renderProduct(product) {
-  const main = document.querySelector("main");
-  const title = main?.querySelector("h1");
-  const image = document.getElementById("main-garment-image");
-  const designer = main?.querySelector("a.font-label-sm.uppercase");
-  const subtitle = title?.nextElementSibling;
-  const price = main?.querySelector("span.font-display-md");
+  const name = product.name || "Untitled listing";
+  const designer = product.designer || "The Queens Archive";
 
-  if (title) title.textContent = product.name || "Untitled listing";
-  if (product.name) document.title = `${product.name} | The Queens Archive`;
+  document.title = `${name} | The Queens Archive`;
+
+  setText("product-title", name);
+  setText("product-designer", designer);
+  setText("product-subtitle", [product.era, product.condition].filter(Boolean).join(" · "));
+  setText("product-status", "Archive Listing");
+  setText("registry-status", "Archive Listing");
+  setText("breadcrumb-designer", designer);
+  setText("breadcrumb-lot", product.lotNumber ? `Lot ${product.lotNumber}` : "Listing");
+
+  const image = el("main-garment-image");
   if (image && product.imageUrl) {
     image.src = product.imageUrl;
-    image.alt = `${product.designer || "Archive"}: ${product.name || "Product image"}`;
+    image.alt = `${designer}: ${name}`;
   }
-  if (designer) designer.textContent = product.designer || "The Queens Archive";
-  if (subtitle) subtitle.textContent = [product.era, product.condition].filter(Boolean).join(" · ");
-  if (price) price.textContent = formatPrice(product.price, product.currency);
-  const comparisonPrice = main?.querySelector("span.line-through");
-  if (comparisonPrice) {
-    const hasComparisonPrice = Number(product.compareAtPrice) > Number(product.price);
-    comparisonPrice.hidden = !hasComparisonPrice;
-    if (hasComparisonPrice) {
-      comparisonPrice.textContent = formatPrice(product.compareAtPrice, product.currency);
-    }
-  }
+  setHidden("archival-edition-tag", !product.lotNumber);
+  setText("archival-edition-tag", product.lotNumber ? `Lot ${product.lotNumber}` : "");
 
-  const inquiry = main?.querySelector('a[href*="wa.me"]');
+  setText("product-price", formatPrice(product.price, product.currency));
+  setText("product-currency", product.currency || "USD");
+
+  const hasReduction =
+    Number.isFinite(Number(product.compareAtPrice)) &&
+    Number(product.compareAtPrice) > Number(product.price);
+
+  if (hasReduction) {
+    setText("product-compare-price", formatPrice(product.compareAtPrice, product.currency));
+    setText("archive-discount-badge", `${Math.round((1 - product.price / product.compareAtPrice) * 100)}% Archive Reduction`);
+  }
+  setHidden("product-compare-price", !hasReduction);
+  setHidden("archive-discount-badge", !hasReduction);
+
+  createSpecs(product);
+  createDescription(product);
+
+  const inquiry = el("product-acquire");
   if (inquiry) {
     inquiry.href = whatsappUrl(product);
     inquiry.target = "_blank";
     inquiry.rel = "noopener noreferrer";
+    inquiry.hidden = false;
   }
 
-  main?.querySelectorAll(".thumb-btn").forEach((button) => {
-    button.hidden = true;
-  });
-
-  const staticVerification = [...(main?.querySelectorAll("span") || [])]
-    .find((element) => element.textContent.includes("Physical Verification Passed"));
-  if (staticVerification) staticVerification.closest("div.absolute")?.remove();
-
-  const registryStatus = [...(main?.querySelectorAll("span") || [])]
-    .find((element) => element.textContent.includes("Registry Status:"));
-  if (registryStatus) registryStatus.textContent = "Live Archive Listing";
-  const saleBadge = [...(main?.querySelectorAll("span") || [])]
-    .find((element) => element.textContent.trim() === "Sale Acquisition");
-  if (saleBadge) saleBadge.textContent = "Archive Listing";
-
-  document.getElementById("curatorial-research")?.setAttribute("hidden", "");
-  document.getElementById("preservation-scorecard")?.setAttribute("hidden", "");
-
-  const detailPanel = document.createElement("div");
-  detailPanel.className = "dynamic-product-summary mt-space-md p-space-md bg-surface-container-low border border-outline-variant/30";
-  detailPanel.append(createDetail("Description", product.description));
-  detailPanel.append(createDetail("Collection / era", product.era));
-  detailPanel.append(createDetail("Condition", product.condition));
-  detailPanel.append(createDetail("Category", product.category));
-  detailPanel.append(createDetail("Lot reference", product.lotNumber));
-  const existingPanel = main?.querySelector(".dynamic-product-summary");
-  if (existingPanel) existingPanel.replaceWith(detailPanel);
-  else title?.parentElement?.append(detailPanel);
-
-  const notice = document.getElementById("live-product-notice");
-  notice?.remove();
-}
-
-function createDetail(label, value) {
-  const row = document.createElement("div");
-  row.className = "flex items-baseline justify-between gap-space-md py-2 border-b border-outline-variant/30 last:border-b-0";
-  const heading = document.createElement("span");
-  heading.className = "font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant";
-  heading.textContent = label;
-  const content = document.createElement("span");
-  content.className = "font-body-sm text-body-sm text-on-surface text-right";
-  content.textContent = value || "Not specified";
-  row.append(heading, content);
-  return row;
+  clearNotice();
 }
