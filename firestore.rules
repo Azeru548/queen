@@ -1,11 +1,25 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    // Publishing rights are limited to named accounts. Reads stay public so the
+    // storefront can render without a session.
+    //
+    // Replace the placeholder below with the UID from
+    // Firebase Console -> Authentication -> Users. Until you do, every write is
+    // refused, including uploads from upload.html.
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.token.admin == true
+        || request.auth.uid in [
+          'REPLACE_WITH_YOUR_ADMIN_UID'
+        ]
+      );
+    }
+
     match /products/{productId} {
       allow read: if true;
-      allow create: if validProduct();
-      allow update: if validProduct();
-      allow delete: if true;
+      allow create, update: if isAdmin() && validProduct();
+      allow delete: if isAdmin();
     }
 
     function validProduct() {

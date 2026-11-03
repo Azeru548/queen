@@ -1,5 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import {
   addDoc,
   collection,
   doc,
@@ -20,8 +26,9 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+export const auth = getAuth(app);
 export const productsCollection = collection(db, "products");
-export { addDoc, doc, onSnapshot, serverTimestamp };
+export { addDoc, doc, onAuthStateChanged, onSnapshot, serverTimestamp, signInWithEmailAndPassword, signOut };
 
 export function watchProducts(onProducts, onError) {
   return onSnapshot(

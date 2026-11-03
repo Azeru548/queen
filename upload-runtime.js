@@ -1,4 +1,12 @@
-import { addDoc, productsCollection, serverTimestamp } from "./firebase.js";
+import {
+  addDoc,
+  auth,
+  onAuthStateChanged,
+  productsCollection,
+  serverTimestamp,
+  signInWithEmailAndPassword,
+  signOut
+} from "./firebase.js";
 import { cloudinaryCloudName, cloudinaryUploadPreset } from "./cloudinary-config.js";
 
 const form = document.getElementById("product-upload-form");
@@ -6,9 +14,87 @@ const status = document.getElementById("upload-status");
 const submitButton = document.getElementById("submit-listing");
 const imageInput = document.getElementById("product-image");
 const imagePreview = document.getElementById("image-preview");
+const signInPanel = document.getElementById("sign-in-panel");
+const signInForm = document.getElementById("sign-in-form");
+const signInStatus = document.getElementById("sign-in-status");
+const signInButton = document.getElementById("sign-in-submit");
+const adminPanel = document.getElementById("admin-panel");
+const adminEmail = document.getElementById("admin-email");
+const adminUid = document.getElementById("admin-uid");
+const signOutButton = document.getElementById("sign-out");
 const maximumImageSize = 10 * 1024 * 1024;
 const allowedImageTypes = new Set(["image/jpeg", "image/png", "image/webp", "image/avif"]);
 let previewUrl;
+
+/* The Firestore rules only permit writes from a signed-in admin, so the form
+   stays out of reach until a session exists. */
+onAuthStateChanged(auth, (user) => {
+  if (!signInPanel || !adminPanel) return;
+  signInPanel.hidden = Boolean(user);
+  adminPanel.hidden = !user;
+  if (user) {
+    if (adminEmail) adminEmail.textContent = user.email || "signed-in account";
+    if (adminUid) adminUid.textContent = user.uid;
+  }
+});
+
+signInForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const email = document.getElementById("sign-in-email").value.trim();
+  const password = document.getElementById("sign-in-password").value;
+  setSignInButtonBusy(true);
+  setSignInStatus("Signing in…");
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    setSignInStatus("");
+    signInForm.reset();
+  } catch (error) {
+    console.error("Could not sign in:", error);
+    setSignInStatus(signInMessage(error), true);
+  } finally {
+    setSignInButtonBusy(false);
+  }
+});
+
+signOutButton?.addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+    setStatus("");
+  } catch (error) {
+    console.error("Could not sign out:", error);
+  }
+});
+
+function signInMessage(error) {
+  switch (error?.code) {
+    case "auth/invalid-credential":
+    case "auth/wrong-password":
+    case "auth/user-not-found":
+    case "auth/invalid-email":
+      return "That email and password combination was not accepted.";
+    case "auth/operation-not-allowed":
+      return "Email/password sign-in is switched off. Enable it in Firebase Console → Authentication → Sign-in method.";
+    case "auth/too-many-requests":
+      return "Too many attempts. Wait a moment, then try again.";
+    case "auth/unauthorized-domain":
+      return "This domain is not authorised for sign-in. Add it in Firebase Console → Authentication → Settings → Authorized domains.";
+    default:
+      return error?.message || "Sign-in failed.";
+  }
+}
+
+function setSignInStatus(message, isError = false) {
+  if (!signInStatus) return;
+  signInStatus.textContent = message;
+  signInStatus.classList.toggle("text-error", isError);
+  signInStatus.classList.toggle("text-secondary", !isError);
+}
+
+function setSignInButtonBusy(busy) {
+  if (!signInButton) return;
+  signInButton.disabled = busy;
+  signInButton.textContent = busy ? "Signing in…" : "Sign in";
+}
 
 imageInput?.addEventListener("change", () => {
   const file = imageInput.files?.[0];
@@ -27,6 +113,11 @@ imageInput?.addEventListener("change", () => {
 form?.addEventListener("submit", async (event) => {
   event.preventDefault();
   setStatus("");
+
+  if (!auth.currentUser) {
+    setStatus("Sign in before publishing a listing.", true);
+    return;
+  }
 
   if (!cloudinaryCloudName || cloudinaryCloudName.startsWith("YOUR_") ||
       !cloudinaryUploadPreset || cloudinaryUploadPreset.startsWith("YOUR_")) {
@@ -92,6 +183,16 @@ form?.addEventListener("submit", async (event) => {
     setStatus(`Listing added. View it in the catalog or open description.html?id=${encodeURIComponent(saved.id)}.`);
   } catch (error) {
     console.error("Could not publish the product listing:", error);
+    if (error?.code === "permission-denied") {
+      const uid = auth.currentUser?.uid;
+      setStatus(
+        uid
+          ? `Firestore refused the write. Add UID ${uid} to the admin list in firestore.rules, then publish the rules.`
+          : "Firestore refused the write because no one is signed in.",
+        true
+      );
+      return;
+    }
     setStatus(error.message || "The listing could not be published. Check Cloudinary and Firestore configuration, then try again.", true);
   } finally {
     setBusy(false);
