@@ -6,7 +6,10 @@ service cloud.firestore {
     //
     // Replace the placeholder below with the UID from
     // Firebase Console -> Authentication -> Users. Until you do, every write is
-    // refused, including uploads from upload.html.
+    // refused, including the add, edit, and delete actions on admin.html.
+    //
+    // Updates are validated so an edit cannot strip or corrupt a listing, and
+    // deletions are limited to signed-in admins.
     function isAdmin() {
       return request.auth != null && (
         request.auth.token.admin == true

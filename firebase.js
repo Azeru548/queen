@@ -8,10 +8,13 @@ import {
 import {
   addDoc,
   collection,
+  deleteDoc,
+  deleteField,
   doc,
   getFirestore,
   onSnapshot,
-  serverTimestamp
+  serverTimestamp,
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -28,7 +31,18 @@ export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const productsCollection = collection(db, "products");
-export { addDoc, doc, onAuthStateChanged, onSnapshot, serverTimestamp, signInWithEmailAndPassword, signOut };
+export {
+  addDoc,
+  deleteDoc,
+  deleteField,
+  doc,
+  onAuthStateChanged,
+  onSnapshot,
+  serverTimestamp,
+  signInWithEmailAndPassword,
+  signOut,
+  updateDoc
+};
 
 export function watchProducts(onProducts, onError) {
   return onSnapshot(

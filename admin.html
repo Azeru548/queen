@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catalog dashboard | The Queens Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: "Hanken Grotesk", sans-serif; background: #fff8f4; color: #1f1b17; }
+    h1, h2, .brand { font-family: "Bodoni Moda", serif; }
+    input, select, textarea { width: 100%; border: 1px solid #cdc5bc; background: #fff; padding: .8rem; outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: #755a1f; }
+    label { display: block; margin-bottom: .4rem; font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+    .text-error { color: #ba1a1a; }
+    .text-secondary { color: #755a1f; }
+    .listing-media { background: #f5ece5; object-fit: cover; }
+  </style>
+<link rel="icon" type="image/png" href="logo.png"></head>
+<body>
+  <header class="border-b border-[#cdc5bc] bg-white/80">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-5 py-5">
+      <a href="index.html" class="flex flex-col items-center group"><img alt="The Queens — Archive &amp; Atelier" class="h-14 w-auto object-contain" decoding="async" src="logo.png"><span class="block font-sans text-[10px] tracking-[.25em] text-[#755a1f] uppercase">Archive &amp; Atelier</span></a>
+      <div class="flex items-center gap-5 text-xs uppercase tracking-widest">
+        <a href="listing.html" class="hover:text-[#755a1f]">View catalog</a>
+        <a href="index.html" class="hover:text-[#755a1f]">Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-5xl px-5 py-12">
+    <p class="mb-2 text-xs font-semibold uppercase tracking-[.2em] text-[#755a1f]">Archive Management</p>
+    <h1 class="mb-3 text-4xl">Catalog dashboard</h1>
+    <p class="mb-8 max-w-2xl leading-7 text-[#4b463f]">Add, edit, and remove listings from the live archive. Images upload to Cloudinary; listing details save to Firestore and appear in the catalog immediately.</p>
+
+    <section id="sign-in-panel" class="mb-8 border border-[#cdc5bc] bg-white p-5 shadow-sm sm:p-8">
+      <h2 class="mb-1 text-xl">Archivist sign-in</h2>
+      <p class="mb-5 text-sm leading-6 text-[#4b463f]">Managing the catalog requires a signed-in account that the Firestore rules allow.</p>
+      <form id="sign-in-form" class="space-y-4">
+        <div>
+          <label for="sign-in-email">Email</label>
+          <input id="sign-in-email" name="email" type="email" autocomplete="username" required>
+        </div>
+        <div>
+          <label for="sign-in-password">Password</label>
+          <input id="sign-in-password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <button id="sign-in-submit" type="submit" class="bg-black px-7 py-3 text-xs font-semibold uppercase tracking-[.18em] text-white hover:bg-[#755a1f] disabled:opacity-60">Sign in</button>
+      </form>
+      <p id="sign-in-status" class="mt-3 min-h-6 text-sm" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="admin-panel" hidden>
+      <div class="mb-8 flex flex-wrap items-center justify-between gap-3 border border-[#cdc5bc] bg-white p-4 text-sm">
+        <p>Signed in as <strong id="admin-email"></strong><br>
+          <span class="text-xs uppercase tracking-widest text-[#755a1f]">UID <span id="admin-uid" class="normal-case tracking-normal"></span></span>
+        </p>
+        <button id="sign-out" type="button" class="border border-[#cdc5bc] px-4 py-2 text-xs uppercase tracking-widest hover:border-[#755a1f] hover:text-[#755a1f]">Sign out</button>
+      </div>
+
+      <section class="mb-10">
+        <div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+          <h2 class="text-2xl">Published listings</h2>
+          <p id="listings-count" class="text-xs uppercase tracking-widest text-[#755a1f]">&mdash;</p>
+        </div>
+        <div id="listings-list" class="divide-y divide-[#cdc5bc] border border-[#cdc5bc] bg-white">
+          <p id="listings-empty" class="p-5 text-sm text-[#4b463f]">Loading the live archive…</p>
+        </div>
+        <p class="mt-2 text-xs text-[#4b463f]">Deleting a listing removes it from the catalog and cannot be undone. The image already uploaded to Cloudinary stays in your media library.</p>
+        <p id="listings-status" class="mt-2 min-h-6 text-sm" role="status" aria-live="polite"></p>
+      </section>
+
+      <form id="product-form" class="space-y-6 border border-[#cdc5bc] bg-white p-5 shadow-sm sm:p-8">
+        <div>
+          <h2 id="form-title" class="text-2xl">Add a new listing</h2>
+          <p id="form-mode-note" class="mt-1 text-sm text-[#4b463f]" hidden>You are editing an existing listing. Fields left unchanged stay as they are.</p>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label for="name">Product name *</label>
+            <input id="name" name="name" required maxlength="120">
+          </div>
+          <div>
+            <label for="designer">Designer / label *</label>
+            <input id="designer" name="designer" required maxlength="100">
+          </div>
+          <div>
+            <label for="price">Price *</label>
+            <input id="price" name="price" type="number" min="0.01" step="0.01" required>
+          </div>
+          <div>
+            <label for="currency">Currency *</label>
+            <select id="currency" name="currency" required>
+              <option value="USD">USD ($)</option>
+              <option value="NGN">NGN (₦)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+            </select>
+          </div>
+          <div>
+            <label for="compareAtPrice">Previous price (optional)</label>
+            <input id="compareAtPrice" name="compareAtPrice" type="number" min="0" step="0.01">
+          </div>
+          <div>
+            <label for="category">Category</label>
+            <input id="category" name="category" maxlength="80" placeholder="Outerwear, tailoring…">
+          </div>
+          <div>
+            <label for="era">Collection / era</label>
+            <input id="era" name="era" maxlength="100" placeholder="Autumn/Winter 2002">
+          </div>
+          <div>
+            <label for="condition">Condition</label>
+            <input id="condition" name="condition" maxlength="100" placeholder="Excellent, unworn…">
+          </div>
+          <div>
+            <label for="lotNumber">Lot reference</label>
+            <input id="lotNumber" name="lotNumber" maxlength="40">
+          </div>
+          <div>
+            <label for="product-image" id="product-image-label">Product image *</label>
+            <input id="product-image" name="image" type="file" accept="image/jpeg,image/png,image/webp,image/avif" required>
+            <p id="product-image-hint" class="mt-1 text-xs text-[#4b463f]">JPG, PNG, WebP, or AVIF; maximum 10 MB.</p>
+          </div>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div id="current-image-wrap" hidden>
+            <p class="mb-1 text-xs font-semibold uppercase tracking-[.12em]">Current image</p>
+            <img id="current-image" class="listing-media max-h-48 w-36 border border-[#cdc5bc]" alt="Current listing image">
+          </div>
+          <div>
+            <img id="image-preview" class="max-h-80 max-w-full object-contain" alt="Selected product preview" hidden>
+          </div>
+        </div>
+
+        <div>
+          <label for="description">Description *</label>
+          <textarea id="description" name="description" rows="5" required maxlength="2000"></textarea>
+        </div>
+
+        <p id="form-status" class="min-h-6 text-sm" role="status" aria-live="polite"></p>
+        <div class="flex flex-wrap items-center gap-3">
+          <button id="submit-listing" type="submit" class="bg-black px-7 py-3 text-xs font-semibold uppercase tracking-[.18em] text-white hover:bg-[#755a1f] disabled:opacity-60">Publish listing</button>
+          <button id="cancel-edit" type="button" class="border border-[#cdc5bc] px-5 py-3 text-xs uppercase tracking-widest hover:border-[#755a1f] hover:text-[#755a1f]" hidden>Cancel edit</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script type="module" src="admin-runtime.js"></script>
+</body>
+</html>
